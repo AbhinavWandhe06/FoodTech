@@ -1,0 +1,177 @@
+.hero {
+    position: relative;
+    padding: 100px 8%;
+    background: linear-gradient(135deg, #0f2419, #1a3c2b);
+    color: white;
+    overflow: hidden;
+}
+
+/* Background blobs */
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    filter: blur(120px);
+    opacity: 0.4;
+    border-radius: 50%;
+}
+
+.blob1 {
+    background: #2d5a40;
+    top: -50px;
+    left: -50px;
+}
+
+.blob2 {
+    background: #d4870a;
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Layout */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* LEFT */
+.hero-left {
+    position: relative;
+    flex: 1;
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.main-card {
+    width: 260px;
+}
+
+.floating {
+    position: absolute;
+    font-size: 30px;
+    padding: 16px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.card1 {
+    top: -20px;
+    left: 200px;
+}
+
+.card2 {
+    bottom: -20px;
+    left: 100px;
+}
+
+.card3 {
+    top: 120px;
+    right: 0;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* RIGHT */
+.hero-right {
+    flex: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.hero-right h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-right h1 span {
+    color: #d4870a;
+}
+
+.hero-right p {
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background: #d4870a;
+    padding: 12px 22px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 22px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Stats */
+.hero-stats {
+    display: flex;
+    gap: 40px;
+}
+
+.hero-stats strong {
+    font-size: 22px;
+}
+
+.hero-stats span {
+    display: block;
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-left {
+        order: 2;
+    }
+}

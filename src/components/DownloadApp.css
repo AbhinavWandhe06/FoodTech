@@ -1,0 +1,362 @@
+/* DownloadApp.css */
+
+.app-section {
+    padding: 80px 7%;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* ── REVEAL ── */
+.app-hidden { opacity: 0; transform: translateY(60px) scale(0.96); filter: blur(10px); }
+.app-visible { animation: appSpawn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+@keyframes appSpawn {
+    from { opacity: 0; transform: translateY(60px) scale(0.96); filter: blur(10px); }
+    to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* ── POSTER CONTAINER ── */
+.app-poster {
+    position: relative;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    box-shadow: 
+        0 40px 80px -20px rgba(0, 0, 0, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.1);
+    padding: 70px 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+body.dark-mode .app-poster {
+    background: linear-gradient(135deg, #091811 0%, #064e3b 100%);
+    box-shadow: 
+        0 40px 80px -20px rgba(0, 0, 0, 0.8),
+        inset 0 2px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ── ANIMATED ORBS ── */
+.app-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.app-orb-1 {
+    width: 400px; height: 400px;
+    background: #3b82f6; /* Blue */
+    top: -100px; left: -100px;
+    animation: orbFloat 15s infinite alternate ease-in-out;
+}
+
+.app-orb-2 {
+    width: 350px; height: 350px;
+    background: #10b981; /* Green */
+    bottom: -80px; right: -50px;
+    animation: orbFloat 20s infinite alternate-reverse ease-in-out;
+}
+
+.app-orb-3 {
+    width: 250px; height: 250px;
+    background: #8b5cf6; /* Purple */
+    top: 30%; right: 25%;
+    animation: orbFloat 12s infinite alternate ease-in-out;
+}
+
+@keyframes orbFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.2); }
+}
+
+/* ── INNER LAYOUT ── */
+.app-poster-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+}
+
+/* ── LEFT CONTENT ── */
+.app-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 24px;
+}
+
+body.dark-mode .app-eyebrow {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.app-heading {
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+}
+
+.app-hl {
+    position: relative;
+    color: #38bdf8;
+    z-index: 1;
+}
+
+body.dark-mode .app-hl { color: #4ade80; }
+
+.app-underline {
+    position: absolute;
+    bottom: -10px; left: 0;
+    width: 100%; height: 24px;
+    color: #2563eb;
+    z-index: -1;
+}
+
+body.dark-mode .app-underline { color: #059669; }
+
+.app-desc {
+    font-size: 16px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+
+.app-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.app-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.app-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: color-mix(in srgb, #38bdf8 20%, transparent);
+    color: #38bdf8;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+body.dark-mode .app-check {
+    background: color-mix(in srgb, #4ade80 20%, transparent);
+    color: #4ade80;
+}
+
+/* ── STORE BUTTONS ── */
+.app-stores {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.app-store-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 22px;
+    border-radius: 14px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.app-store-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.app-store-icon {
+    font-size: 28px;
+}
+
+.app-store-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+}
+
+.app-store-text span {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.app-store-text strong {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* ── RIGHT VISUAL (PHONES) ── */
+.app-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+}
+
+.app-phone-group {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    transform-style: preserve-3d;
+    animation: phoneFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes phoneFloat {
+    0%   { transform: translateY(0px) rotateX(2deg) rotateY(-5deg); }
+    100% { transform: translateY(-20px) rotateX(-2deg) rotateY(5deg); }
+}
+
+/* Base phone style using standard images styled to look like devices */
+.app-phone {
+    position: absolute;
+    border-radius: 36px;
+    object-fit: cover;
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.6),
+        inset 0 0 0 8px #0f172a, /* Artificial bezel */
+        inset 0 0 0 10px rgba(255,255,255,0.2);
+    border: 2px solid #334155;
+}
+
+body.dark-mode .app-phone {
+    inset: 0 0 0 8px #1e293b, inset 0 0 0 10px rgba(255,255,255,0.1);
+}
+
+.app-phone-back {
+    width: 240px;
+    height: 460px;
+    top: -20px;
+    right: 0px;
+    transform: translateZ(-80px) rotate(-8deg);
+    filter: brightness(0.6) blur(2px);
+    opacity: 0.8;
+}
+
+.app-phone-front {
+    width: 260px;
+    height: 500px;
+    top: 30px;
+    left: 0;
+    transform: translateZ(50px) rotate(4deg);
+    filter: brightness(1.05);
+}
+
+/* Hover effect on phones */
+.app-visual:hover .app-phone-group {
+    animation-play-state: paused;
+}
+.app-visual:hover .app-phone-front {
+    transform: translateZ(80px) rotate(0deg) scale(1.05);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.app-visual:hover .app-phone-back {
+    transform: translateZ(-120px) rotate(-15deg);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: brightness(0.4) blur(4px);
+}
+
+/* Floating Badges */
+.app-float-badge {
+    position: absolute;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.badge-1 {
+    top: 15%;
+    left: -40px;
+    transform: translateZ(120px);
+    animation: badgeFloat 4s ease-in-out infinite alternate;
+}
+
+.badge-2 {
+    bottom: 20%;
+    right: -30px;
+    transform: translateZ(90px);
+    animation: badgeFloat 5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes badgeFloat {
+    0%   { transform: translateZ(100px) translateY(0px) rotate(0deg); }
+    100% { transform: translateZ(100px) translateY(-15px) rotate(4deg); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .app-poster-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+    }
+    .app-desc { margin: 0 auto 30px; }
+    .app-features { align-items: center; }
+    .app-stores { justify-content: center; }
+    .app-phone-group { transform: scale(0.9); margin-top: 20px; }
+    .app-poster { padding: 50px 30px; }
+}
+
+@media (max-width: 640px) {
+    .app-phone-group { transform: scale(0.7); height: 380px; }
+    .app-float-badge { display: none; }
+    .app-poster { border-radius: 30px; }
+}

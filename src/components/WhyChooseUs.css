@@ -1,0 +1,208 @@
+.why-section {
+    position: relative;
+    padding-bottom: 20px;
+    z-index: 10;
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- 3D GLASS CONTAINER --- */
+.why-container {
+    width: 65%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow:
+        inset 0 2px 1px rgba(255, 255, 255, 1),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.05),
+        0 15px 40px rgba(0, 0, 0, 0.06); /* Elegant normal shadow */
+    transform: perspective(1200px) rotateX(2deg);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.why-container:hover {
+    transform: perspective(1200px) rotateX(0deg);
+    box-shadow:
+        inset 0 2px 1px rgba(255, 255, 255, 1),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.05),
+        0 25px 60px rgba(0, 0, 0, 0.1); /* Deeper normal shadow on hover */
+}
+
+/* --- BOTTOM-TO-TOP ANIMATION --- */
+.hidden-state {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.animate-rise {
+    animation: riseUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes riseUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) scale(0.9);
+        filter: blur(6px);
+    }
+    70% {
+        transform: translateX(5px) scale(1.02);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* --- ELEGANT 3D POPPY HOVER --- */
+.why-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    padding: 15px 10px;
+    border-radius: 18px;
+    z-index: 1;
+    text-align: center;
+}
+
+.why-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    cursor: pointer;
+}
+
+.why-card:hover .icon-wrapper {
+    transform: translateY(-8px) scale(1.1) rotate(5deg);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.why-card:hover h3 {
+    color: #d4870a;
+}
+
+/* --- UI ELEMENTS --- */
+.icon-wrapper {
+    width: 48px; /* Reduced size */
+    height: 48px;
+    background: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Reduced size */
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Text styles */
+.why-content h3 {
+    font-size: 16px; /* Reduced size */
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.why-content p {
+    font-size: 13px; /* Reduced size */
+    font-family: 'Exo 2', sans-serif;
+    color: #475569;
+    max-width: 170px;
+    line-height: 1.4;
+    margin: 0 auto;
+}
+
+.divider {
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* Prevent divider on hover from interfering */
+.why-card:hover .divider {
+    opacity: 0;
+}
+
+/* --- DARK MODE --- */
+body.dark-mode .why-container {
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+        inset 0 2px 1px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.4),
+        0 15px 40px rgba(0, 0, 0, 0.4); /* Normal dark menu shadow */
+}
+
+body.dark-mode .why-container:hover {
+    box-shadow:
+        inset 0 2px 1px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.4),
+        0 25px 60px rgba(0, 0, 0, 0.6); /* Normal deeper dark shadow */
+}
+
+body.dark-mode .icon-wrapper {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .why-content h3 {
+    color: #f8fafc;
+}
+
+body.dark-mode .why-card:hover h3 {
+    color: #fbbf24;
+}
+
+body.dark-mode .why-content p {
+    color: #94a3b8;
+}
+
+body.dark-mode .divider {
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* --- RESPONSIVE MOBILE VIEW --- */
+@media (max-width: 900px) {
+    .why-container {
+        width: 92%;
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+    
+    .why-card {
+        margin: 0;
+        padding: 10px;
+    }
+    
+    .divider {
+        right: auto;
+        top: auto;
+        bottom: -15px;
+        left: 20%;
+        width: 60%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+    }
+    
+    body.dark-mode .divider {
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+    }
+}

@@ -1,0 +1,101 @@
+/* ========================================
+   GLOBAL ANIMATIONS & SMOOTH SCROLL
+   ======================================== */
+
+/* 1. Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Prevent layout shift on load */
+* { box-sizing: border-box; }
+
+/* ── REVEAL UTILITY CLASSES ──
+   Used by useReveal hook across all sections */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+    transform: translateX(-48px);
+}
+
+.reveal.reveal-right {
+    transform: translateX(48px);
+}
+
+.reveal.reveal-scale {
+    transform: translateY(30px) scale(0.94);
+}
+
+.reveal.reveal-fade {
+    transform: none;
+}
+
+/* When IntersectionObserver fires */
+.reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Staggered children inside a visible parent */
+.reveal-group > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-group > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-group > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-group > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-group > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-group > *:nth-child(6) { transition-delay: 0.55s; }
+
+/* ── GLOBAL PAGE TRANSITIONS ── */
+
+/* Subtle shimmer on first paint for above-fold content */
+@keyframes globalFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Floating effect for decorative elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+}
+
+/* Gentle heartbeat pulse */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.06); }
+}
+
+/* Shimmer sweep (loading/skeleton effect) */
+@keyframes shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6);
+    z-index: 9999;
+    transform-origin: left;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+/* ── SECTION SEPARATOR ── */
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #22c55e, transparent);
+    border-radius: 4px;
+    margin: 0 auto 32px;
+}

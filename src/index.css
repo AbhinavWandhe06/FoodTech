@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, #f8fafc, #eef2f7);
+    color: #111827;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  body.dark-mode {
+    background: linear-gradient(135deg, #091811, #132d1f);
+    color: #f9fafb;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .nav-btn {
+    @apply flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer border-none outline-none;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-gray-700 transition-colors duration-200 no-underline;
+  }
+
+  .nav-link:hover {
+    color: #1a3c2b;
+  }
+
+  .cta-btn {
+    @apply px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 cursor-pointer no-underline;
+  }
+}
